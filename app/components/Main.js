@@ -22,7 +22,7 @@ var Main = React.createClass({
 //RUNS WHEN COMPONENT IS MOUNTED TO THE DOM (LIKE PAGE READY)
   //  On load display the number of clicks
   componentDidMount: function() {
-    console.log("COMPONENT MOUNTED");
+    {/* console.log("COMPONENT MOUNTED");
 
     // The moment the page renders on page load, we will retrieve the previous click count.
     // We will then utilize that click count to change the value of the click state.
@@ -36,11 +36,11 @@ var Main = React.createClass({
         });
         console.log("RESULTS", response);
         console.log("Saved clicks", newClicks);
-      }.bind(this));
+      }.bind(this)); */}
   },
   // Whenever our component updates, the code inside componentDidUpdate is run
   componentDidUpdate: function(prevState) {
-    console.log("COMPONENT UPDATED");
+    {/* console.log("COMPONENT UPDATED");
 
     // We will check if the click count has changed...
     if (prevState.clicks !== this.state.clicks) {
@@ -50,18 +50,19 @@ var Main = React.createClass({
         .then(function() {
           console.log("Posted to MongoDB");
         });
-    }
-  },
-  // Whenever the button is clicked we'll use setState to add to the clickCounter
-  // Note the syntax for setting the state
-  handleClick: function() {
-    this.setState({ clicks: this.state.clicks + 1 });
+    } */}
   },
 
   // Whenever the button is clicked we'll use setState to reset the clickCounter
   // This will reset the clicks -- and it will be passed ALL children
-  resetClick: function() {
-    this.setState({ clicks: 0 });
+  search: function() {
+    {/* this.setState({ clicks: 0 }); */}
+
+    var searchTerm = $("#searchTerm").val();
+    var startYear = $("#startYear").val();
+    var endYear = $("#endYear").val();
+
+    helpers(searchTerm, startYear, endYear);
   },
 
   // Here we render the function
@@ -103,6 +104,7 @@ var Main = React.createClass({
                     <label for="endYear">End Year</label>
                     <input type="date" class="form-control" id="endYear" placeholder="2017">
                   </div>
+                  <button id="search" className="btn btn-danger" type="button" onClick={this.search}>Search</button>
 
 
                 {/* This is where we'll show the click count for the parent */}
@@ -122,7 +124,15 @@ var Main = React.createClass({
         <div className="row">
           <div className="col-md-12">
 
-          
+          <Search setTerm={this.setTerm} />
+
+          </div> {/* col 12 */}
+        </div> {/* row */}
+
+        <div className="row">
+          <div className="col-md-12">
+
+          <Saved setTerm={this.setTerm} />
 
           </div> {/* col 12 */}
         </div> {/* row */}

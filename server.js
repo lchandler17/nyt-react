@@ -24,6 +24,13 @@ app.use(express.static("./public"));
 // -------------------------------------------------
 
 // MongoDB configuration
+
+// Save the URL of our database as well as the name of our collection
+var databaseUrl = "nytreact";
+var collections = ["articles"];
+// Use mongojs to hook the database to the db variable
+// var db = mongojs(databaseUrl, collections);
+
 mongoose.connect("mongodb://nytreact");
 var db = mongoose.connection;
 
@@ -53,16 +60,21 @@ app.get("/api/saved", function(req, res) {
       res.send(articles);
     }
   });
+
 });
 
 app.post("/api/saved", function(req, res) {
 
-  Articles.insert
+  var newArticle = new Article(req.body);
+
+  newArticle.save();
 
 
 });
 
 app.delete("/api/saved", function(req, res) {
+
+  db.articles.remove({})
 
 });
 
