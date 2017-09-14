@@ -19,11 +19,13 @@ var Search = React.createClass({
   // Whenever our component updates, the code inside componentDidUpdate is run
   componentDidUpdate: function(prevState) {
 
-    }
+    },
+  saveArticle: function() {
+
   },
 
   // Here we render the function
-  render: function() {
+  render() {
     return (
       <div className="panel panel-default">
         <div className="panel-heading">
@@ -35,7 +37,7 @@ var Search = React.createClass({
           <button id="save" className="btn btn-danger" type="button" onClick={this.saveArticle}>Save</button>
 
         </div> {/* panel body */}
-      </div> {/* panel */}
+      </div> 
     );
   }
 });

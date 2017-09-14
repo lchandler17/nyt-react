@@ -13,56 +13,22 @@ var Main = React.createClass({
 
   // Here we set a generic state associated with the number of clicks
   getInitialState: function() {
-    // return {
-    //   clicks: 0,
-    //   clickID: "Main"
-    // };
   },
-
 //RUNS WHEN COMPONENT IS MOUNTED TO THE DOM (LIKE PAGE READY)
-  //  On load display the number of clicks
   componentDidMount: function() {
-    {/* console.log("COMPONENT MOUNTED");
-
-    // The moment the page renders on page load, we will retrieve the previous click count.
-    // We will then utilize that click count to change the value of the click state.
-    helpers.getClicks()
-      .then(function(response) {
-        // Using a ternary operator we can set newClicks to the number of clicks in our response object
-        // If we don't have any clicks in our database, set newClicks to 0
-        var newClicks = response.data.length ? response.data[0].clicks : 0;
-        this.setState({
-          clicks: newClicks
-        });
-        console.log("RESULTS", response);
-        console.log("Saved clicks", newClicks);
-      }.bind(this)); */}
   },
   // Whenever our component updates, the code inside componentDidUpdate is run
   componentDidUpdate: function(prevState) {
-    {/* console.log("COMPONENT UPDATED");
-
-    // We will check if the click count has changed...
-    if (prevState.clicks !== this.state.clicks) {
-
-      // If it does, then update the clickcount in MongoDB
-      helpers.saveClicks({ clickID: this.state.clickID, clicks: this.state.clicks })
-        .then(function() {
-          console.log("Posted to MongoDB");
-        });
-    } */}
   },
-
-  // Whenever the button is clicked we'll use setState to reset the clickCounter
-  // This will reset the clicks -- and it will be passed ALL children
+  updateInputValue: function() {
+    this.state={inputfield: evt.target.value};
+  },
   search: function() {
-    {/* this.setState({ clicks: 0 }); */}
-
     var searchTerm = $("#searchTerm").val();
     var startYear = $("#startYear").val();
     var endYear = $("#endYear").val();
 
-    helpers(searchTerm, startYear, endYear);
+    var helpers = helpers(searchTerm, startYear, endYear);
   },
 
   // Here we render the function
@@ -75,13 +41,6 @@ var Main = React.createClass({
             <h2>NYT Article Scrubber</h2>
           </div>
 
-          {/*//     <button
-          //       className="btn btn-danger btn-lg"
-          //       type="button"
-          //       onClick={this.resetClick}
-          //     >
-          //       Reset
-          //     </button>*/}
         </div> {/* row */}
 
         <div className="row">
@@ -94,15 +53,15 @@ var Main = React.createClass({
               <div className="panel-body text-center">
                   <div class="form-group">
                     <label for="searchTerm">Topic</label>
-                    <input type="text" class="form-control" id="searchTerm" placeholder="Search">
+                    <input type="text" class="form-control" id="searchTerm" placeholder="Search"></input>
                   </div>
                   <div class="form-group">
                     <label for="startYear">Start Year</label>
-                    <input type="date" class="form-control" id="startYear" placeholder="">
+                    <input type="date" class="form-control" id="startYear" placeholder=""></input>
                   </div>
                   <div class="form-group">
                     <label for="endYear">End Year</label>
-                    <input type="date" class="form-control" id="endYear" placeholder="2017">
+                    <input type="date" class="form-control" id="endYear" placeholder="2017" onChange={this.updateInputValue}></input>
                   </div>
                   <button id="search" className="btn btn-danger" type="button" onClick={this.search}>Search</button>
 
@@ -136,7 +95,7 @@ var Main = React.createClass({
 
           </div> {/* col 12 */}
         </div> {/* row */}
-      </div> {/* container */}
+      </div>
     );
   }
 });

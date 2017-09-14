@@ -11,7 +11,7 @@ const helpers = {
 
     return axios.get(queryURL).then((response) => {
       console.log(response);
-      return response.data.results[0].formatted;
+      return axios.post("/api/saved",response.data.results[0].formatted).then();
     });
   }
 };

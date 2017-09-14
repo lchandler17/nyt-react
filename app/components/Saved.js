@@ -18,11 +18,14 @@ var Saved = React.createClass({
   // Whenever our component updates, the code inside componentDidUpdate is run
   componentDidUpdate: function(prevState) {
 
-    }
+    
+  },
+  removeArticle: function() {
+
   },
 
   // Here we render the function
-  render: function() {
+  render() {
     return (
       <div className="panel panel-default">
         <div className="panel-heading">
@@ -34,7 +37,7 @@ var Saved = React.createClass({
           <button id="remove" className="btn btn-danger" type="button" onClick={this.removeArticle}>Remove</button>
 
         </div> {/* panel body */}
-      </div> {/* panel */}
+      </div> 
     );
   }
 });
